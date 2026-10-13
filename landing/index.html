@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Recepcionista con IA para clínicas dentales · Córdoba</title>
+<meta name="description" content="Atiende todas las llamadas de tu clínica dental y agenda citas automáticamente, 24 horas.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#f5f0e6;--ink:#1b1a17;--accent:#4338ca;--mut:#6b665c;--card:#fffdf8;--line:#e3dccd}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.6 Inter,sans-serif}
+.wrap{max-width:960px;margin:0 auto;padding:0 20px}
+h1,h2,h3{font-family:Manrope,sans-serif;line-height:1.15;margin:0}
+h1{font-size:clamp(32px,6vw,52px);letter-spacing:-.02em}
+h2{font-size:clamp(24px,4vw,34px);margin-bottom:20px}
+section{padding:56px 0}
+nav{padding:18px 0;display:flex;justify-content:space-between;align-items:center}
+.logo{font:800 18px Manrope,sans-serif}
+.btn{display:inline-block;background:var(--accent);color:#fff;border:0;border-radius:999px;padding:14px 26px;font:600 16px Inter,sans-serif;cursor:pointer;text-decoration:none}
+.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}
+.hero{padding:48px 0 24px}.hero p{font-size:19px;color:var(--mut);max-width:620px;margin:20px 0 28px}
+.row{display:flex;gap:12px;flex-wrap:wrap}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px}
+.card h3{font-size:18px;margin-bottom:8px}.card p{margin:0;color:var(--mut)}
+.num{font:800 28px Manrope,sans-serif;color:var(--accent)}
+.demo{background:var(--ink);color:var(--paper);border-radius:24px;padding:40px 28px;text-align:center}
+.demo p{color:#cfc8b8;max-width:520px;margin:12px auto 24px}
+.demo .btn{background:var(--paper);color:var(--ink)}
+#estado{margin-top:16px;font-size:14px;color:#cfc8b8;min-height:20px}
+.price{font:800 36px Manrope,sans-serif}.price small{font:500 15px Inter,sans-serif;color:var(--mut)}
+details{border-bottom:1px solid var(--line);padding:14px 0}summary{cursor:pointer;font-weight:600}
+details p{color:var(--mut);margin:8px 0 0}
+footer{padding:32px 0;color:var(--mut);font-size:14px;border-top:1px solid var(--line)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav><span class="logo">Recepcionista IA</span><a class="btn ghost" href="#demo">Probar demo</a></nav>
+
+  <header class="hero">
+    <h1>Que ninguna llamada de un paciente se quede sin contestar.</h1>
+    <p>Un asistente de voz atiende el teléfono de tu clínica, resuelve dudas básicas y agenda citas en tu calendario. Mientras tu equipo atiende a pacientes.</p>
+    <div class="row"><a class="btn" href="#demo">Hablar con la demo</a><a class="btn ghost" href="#contacto">Quiero uno en mi clínica</a></div>
+  </header>
+
+  <section>
+    <h2>El problema: las llamadas perdidas son pacientes perdidos</h2>
+    <div class="grid">
+      <div class="card"><div class="num">1</div><h3>Estás con un paciente</h3><p>No puedes coger el teléfono. Quien llama no suele dejar mensaje: llama a la siguiente clínica.</p></div>
+      <div class="card"><div class="num">2</div><h3>Fuera de horario</h3><p>Muchos pacientes llaman a mediodía, por la tarde o al salir del trabajo. El asistente contesta siempre.</p></div>
+      <div class="card"><div class="num">3</div><h3>Cada paciente nuevo cuenta</h3><p>Una sola cita recuperada de ortodoncia o implantes puede pagar meses de servicio.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Cómo funciona</h2>
+    <div class="grid">
+      <div class="card"><h3>1. Contesta</h3><p>Saluda, avisa de que es un asistente virtual y entiende qué necesita el paciente.</p></div>
+      <div class="card"><h3>2. Agenda</h3><p>Consulta tu calendario real, ofrece huecos libres y reserva la cita.</p></div>
+      <div class="card"><h3>3. Te avisa</h3><p>Ves las citas y el resumen de cada llamada en un panel sencillo.</p></div>
+    </div>
+  </section>
+
+  <section id="demo">
+    <div class="demo">
+      <h2>Pruébalo ahora</h2>
+      <p>Pulsa y habla como si fueras un paciente: pide una limpieza, pregunta el horario o di que te duele una muela. Necesitas permitir el micrófono.</p>
+      <button class="btn" id="llamar">Iniciar llamada de prueba</button>
+      <div id="estado"></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Precio</h2>
+    <div class="grid">
+      <div class="card"><div class="price">99 €<small> /mes</small></div><p>Asistente de voz, agenda automática y panel. Sin permanencia.</p></div>
+      <div class="card"><div class="price">150 €<small> una vez</small></div><p>Instalación y configuración con tu horario, servicios y calendario.</p></div>
+      <div class="card"><div class="price">14 días</div><p>Piloto de prueba para comprobar cuántas llamadas recupera.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Preguntas frecuentes</h2>
+    <details><summary>¿Los pacientes saben que hablan con una IA?</summary><p>Sí. El asistente se identifica como virtual y avisa de que la llamada puede grabarse.</p></details>
+    <details><summary>¿Qué pasa con los datos de los pacientes?</summary><p>Firmamos el contrato de encargado de tratamiento que exige el RGPD y solo guardamos lo necesario para gestionar la cita.</p></details>
+    <details><summary>¿Y si hay una urgencia?</summary><p>No da consejos médicos. Ofrece el hueco más cercano e indica acudir a urgencias o llamar al 112 si empeora.</p></details>
+    <details><summary>¿Se integra con mi software de gestión?</summary><p>De momento trabaja con Google Calendar. Otras integraciones, bajo petición.</p></details>
+  </section>
+
+  <section id="contacto">
+    <div class="card">
+      <h2>¿Lo probamos en tu clínica?</h2>
+      <p style="color:var(--mut)">Escríbenos y lo dejamos funcionando en pocos días.</p>
+      <div class="row" style="margin-top:16px">
+        <a class="btn" id="wa" href="#">WhatsApp</a>
+        <a class="btn ghost" id="mail" href="#">Email</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>© <span id="y"></span> Recepcionista IA · Córdoba · <a href="#" id="priv">Política de privacidad</a></footer>
+</div>
+
+<script type="module">
+// ====== CONFIGURA ESTO ======
+const VAPI_PUBLIC_KEY = 'PON_AQUI_TU_PUBLIC_KEY_DE_VAPI';
+const ASSISTANT_ID    = 'PON_AQUI_EL_ID_DEL_ASISTENTE';
+const WHATSAPP        = '34600000000';          // sin + ni espacios
+const EMAIL           = 'hola@tudominio.es';
+const PRIVACIDAD_URL  = '#';                    // enlaza tu política de privacidad
+// ============================
+import Vapi from 'https://cdn.jsdelivr.net/npm/@vapi-ai/web/+esm';
+
+document.getElementById('y').textContent = new Date().getFullYear();
+document.getElementById('wa').href = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent('Hola, me interesa el recepcionista con IA para mi clínica.')}`;
+document.getElementById('mail').href = `mailto:${EMAIL}?subject=Recepcionista%20IA`;
+document.getElementById('priv').href = PRIVACIDAD_URL;
+
+const btn = document.getElementById('llamar'), estado = document.getElementById('estado');
+let vapi = null, activa = false;
+
+btn.addEventListener('click', () => {
+  if (VAPI_PUBLIC_KEY.startsWith('PON_AQUI')) { estado.textContent = 'Falta configurar la clave pública de Vapi en el código.'; return; }
+  if (!vapi) {
+    vapi = new Vapi(VAPI_PUBLIC_KEY);
+    vapi.on('call-start', () => { activa = true; btn.textContent = 'Colgar'; estado.textContent = 'Conectado. Habla cuando quieras.'; });
+    vapi.on('call-end',   () => { activa = false; btn.textContent = 'Iniciar llamada de prueba'; estado.textContent = 'Llamada finalizada.'; });
+    vapi.on('error',      () => { activa = false; btn.textContent = 'Iniciar llamada de prueba'; estado.textContent = 'No se pudo conectar. Revisa el micrófono e inténtalo de nuevo.'; });
+  }
+  if (activa) { vapi.stop(); return; }
+  estado.textContent = 'Conectando…';
+  vapi.start(ASSISTANT_ID);
+});
+</script>
+</body>
+</html>

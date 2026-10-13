@@ -1,0 +1,119 @@
+{
+  "name": "Recepcionista Clínica Dental (demo)",
+  "firstMessage": "Hola, ha llamado a Clínica Dental Demo, soy el asistente virtual. Esta llamada puede grabarse para mejorar el servicio. ¿En qué puedo ayudarle?",
+  "firstMessageMode": "assistant-speaks-first",
+  "transcriber": {
+    "provider": "deepgram",
+    "model": "nova-2",
+    "language": "es"
+  },
+  "voice": {
+    "provider": "azure",
+    "voiceId": "es-ES-ElviraNeural"
+  },
+  "model": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "temperature": 0.3,
+    "messages": [
+      {
+        "role": "system",
+        "content": "Eres el asistente virtual de recepción de Clínica Dental Demo, en Córdoba (España). Hablas en español de España, con tono cercano y profesional, frases cortas (es una llamada telefónica).\n\nFecha y hora actuales: {{\"now\" | date: \"%A %d de %B de %Y, %H:%M\", \"Europe/Madrid\"}} (zona Europe/Madrid).\n\nTu trabajo: resolver dudas básicas y agendar citas.\n\nDatos de la clínica:\n- Horario: lunes a jueves 9:00-14:00 y 16:00-20:00; viernes 9:00-14:00. Sábados y domingos cerrado.\n- Servicios: revisión, limpieza, empastes, ortodoncia, implantes, blanqueamiento.\n- Primera visita: revisión orientativa. No des precios cerrados: di que el doctor valora cada caso en consulta.\n\nPara agendar:\n1. Pregunta el motivo y qué día prefiere.\n2. Usa check_availability con la fecha (YYYY-MM-DD) y ofrece como mucho 2-3 horas.\n3. Pide nombre completo y teléfono. Repite el teléfono dígito a dígito para confirmarlo.\n4. Usa book_appointment con datetime en formato ISO local (YYYY-MM-DDTHH:mm:00).\n5. Confirma día y hora y despídete.\n\nReglas:\n- Nunca des consejos médicos ni diagnósticos.\n- Si hay dolor intenso, hinchazón en la cara, sangrado que no para o un golpe, ofrece el hueco más cercano y dile que si empeora acuda a urgencias o llame al 112.\n- Si no sabes algo, di que dejarás aviso a la clínica para que le llamen.\n- No inventes huecos: usa siempre check_availability.\n- Si pregunta, reconoce que eres un asistente virtual."
+      }
+    ],
+    "tools": [
+      {
+        "type": "function",
+        "async": false,
+        "function": {
+          "name": "check_availability",
+          "description": "Devuelve huecos libres de un día concreto.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "date": {
+                "type": "string",
+                "description": "Fecha YYYY-MM-DD"
+              }
+            },
+            "required": [
+              "date"
+            ]
+          }
+        },
+        "server": {
+          "url": "https://TU-URL-PUBLICA/vapi",
+          "headers": {
+            "x-vapi-secret": "cambia-esto"
+          }
+        },
+        "messages": [
+          {
+            "type": "request-start",
+            "content": "Un momento, miro la agenda."
+          }
+        ]
+      },
+      {
+        "type": "function",
+        "async": false,
+        "function": {
+          "name": "book_appointment",
+          "description": "Reserva una cita de 30 minutos.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Nombre completo del paciente"
+              },
+              "phone": {
+                "type": "string",
+                "description": "Teléfono de contacto"
+              },
+              "reason": {
+                "type": "string",
+                "description": "Motivo de la visita"
+              },
+              "datetime": {
+                "type": "string",
+                "description": "Fecha y hora local ISO, p. ej. 2026-10-06T10:30:00"
+              }
+            },
+            "required": [
+              "name",
+              "phone",
+              "datetime"
+            ]
+          }
+        },
+        "server": {
+          "url": "https://TU-URL-PUBLICA/vapi",
+          "headers": {
+            "x-vapi-secret": "cambia-esto"
+          }
+        },
+        "messages": [
+          {
+            "type": "request-start",
+            "content": "Perfecto, la reservo ahora."
+          }
+        ]
+      }
+    ]
+  },
+  "endCallPhrases": [
+    "adiós",
+    "hasta luego"
+  ],
+  "maxDurationSeconds": 300,
+  "server": {
+    "url": "https://TU-URL-PUBLICA/vapi",
+    "headers": {
+      "x-vapi-secret": "cambia-esto"
+    }
+  },
+  "serverMessages": [
+    "end-of-call-report"
+  ]
+}

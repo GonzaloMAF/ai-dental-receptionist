@@ -43,37 +43,26 @@ An AI-powered voice receptionist prototype for dental clinics, built with Node.j
 ## Getting Started
 
 1. Clone the repository:
-
-   ```bash
-   git clone https://github.com/GonzaloMAF/recepcionista-dental-ia.git
-   cd recepcionista-dental-ia
-   ```
-
+  ```
+  git clone https://github.com/GonzaloMAF/recepcionista-dental-ia.git
+  cd recepcionista-dental-ia
+  ```
 2. Install dependencies:
-
-   ```bash
-   npm install
-   ```
-
+  ```
+  npm install
+  ```
 3. Create your environment file:
-
-   ```bash
-   copy .env.example .env
-   ```
-
-   On macOS or Linux, use `cp .env.example .env`.
-
+  ```
+  copy .env.example .env
+  ```
+  On macOS or Linux, use `cp .env.example .env`.
 4. Configure the required environment variables and Google Calendar credentials. Never commit your real `.env` file or private credentials.
-
 5. Follow the detailed setup instructions in `INSTALAR.md`.
-
 6. Start the development server:
-
-   ```bash
-   npm run dev
-   ```
-
-   Open `http://localhost:3000` and check that the server responds as expected.
+  ```
+  npm run dev
+  ```
+  Open `http://localhost:3000` and check that the server responds as expected.
 
 ## Limitations and Security
 

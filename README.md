@@ -1,92 +1,88 @@
-# Recepcionista virtual con IA para clínicas dentales
+# AI Dental Receptionist
 
-Proyecto de portfolio que simula una recepcionista telefónica con inteligencia artificial para clínicas dentales. El asistente puede consultar disponibilidad, reservar citas en Google Calendar y ofrecer un panel web básico para revisar las próximas citas y el resumen de las llamadas.
+An AI-powered voice receptionist prototype for dental clinics, built with Node.js and Express. The assistant can check appointment availability, schedule appointments in Google Calendar, and provide a web dashboard to review upcoming appointments and call summaries.
 
-> **Estado:** prototipo demostrativo. Requiere configurar credenciales y servicios externos para ejecutar el flujo completo. No está preparado para gestionar pacientes reales sin una revisión adicional de seguridad, privacidad y cumplimiento normativo.
+> **Status:** Portfolio prototype. External services and credentials must be configured to run the complete workflow. It is not ready for real patient use without additional security, privacy, and compliance reviews.
 
-## Funcionalidades
+## Features
 
-- Asistente de voz conectado mediante **Vapi**.
-- Consulta de disponibilidad en Google Calendar.
-- Reserva de citas de 30 minutos, con comprobación de horario y solapamientos.
-- Webhook en **Node.js + Express** para gestionar las herramientas del asistente.
-- Panel web protegido por clave para visualizar próximas citas y resúmenes de llamadas.
-- Landing page con botón para iniciar una llamada de demostración.
-- Configuración mediante variables de entorno para evitar guardar credenciales en el código.
+- AI voice assistant powered by Vapi.
+- Google Calendar availability checks.
+- Appointment scheduling with time-slot and overlap validation.
+- Node.js and Express webhook for handling assistant tool calls.
+- Password-protected dashboard for viewing upcoming appointments and call summaries.
+- Demo landing page with an option to start a voice call.
+- Environment-based configuration to keep credentials out of the source code.
 
-## Tecnologías
+## Tech Stack
 
-- JavaScript / Node.js
-- Express
-- Google Calendar API (`googleapis`)
-- Luxon para fechas y zona horaria
-- Vapi para el agente de voz
-- HTML, CSS y JavaScript para la landing y el panel
+- **Runtime:** Node.js and JavaScript
+- **Backend:** Express
+- **Integrations:** Google Calendar API and Vapi
+- **Date and time handling:** Luxon
+- **Frontend:** HTML, CSS and JavaScript
 
-## Estructura del proyecto
+## Project Structure
 
-```text
-recepcionista-dental/
-├── server.js                 # Webhook, agenda y panel
-├── assistant.json            # Configuración del asistente Vapi
-├── scripts/
-│   └── crear-asistente.js    # Creación/actualización del asistente
-├── landing/
-│   └── index.html            # Página de demostración
-├── .env.example              # Plantilla de variables de entorno
-├── INSTALAR.md               # Guía de configuración detallada
-└── package.json
-```
+- `server.js` — Webhook, calendar integration and dashboard.
+- `assistant.json` — Vapi assistant configuration.
+- `scripts/crear-asistente.js` — Script to create or update the assistant.
+- `landing/index.html` — Demo landing page.
+- `.env.example` — Environment variable template.
+- `INSTALAR.md` — Detailed setup guide in Spanish.
+- `package.json` — Project dependencies and scripts.
 
-## Requisitos
+## Requirements
 
-- Node.js 20.6 o superior
-- Una cuenta de Vapi y sus claves de API
-- Un proyecto de Google Cloud con Google Calendar API habilitada
-- Un calendario de Google y una cuenta de servicio con permisos para editarlo
-- Para recibir webhooks desde Vapi durante las pruebas locales, una URL pública temporal, por ejemplo mediante Cloudflare Tunnel
+- Node.js 20.6 or later.
+- A Vapi account and API credentials.
+- A Google Cloud project with the Google Calendar API enabled.
+- A Google Calendar and a service account with calendar access.
+- A public HTTPS endpoint for receiving Vapi webhooks during local testing.
 
-## Instalación
+## Getting Started
 
-1. Clona el repositorio e instala las dependencias:
+1. Clone the repository:
 
    ```bash
-   git clone https://github.com/TU-USUARIO/recepcionista-dental.git
-   cd recepcionista-dental
+   git clone https://github.com/GonzaloMAF/recepcionista-dental-ia.git
+   cd recepcionista-dental-ia
+   ```
+
+2. Install dependencies:
+
+   ```bash
    npm install
    ```
 
-2. Crea tu archivo de entorno a partir de la plantilla:
+3. Create your environment file:
 
    ```bash
    copy .env.example .env
    ```
 
-   En macOS/Linux puedes usar `cp .env.example .env`.
+   On macOS or Linux, use `cp .env.example .env`.
 
-3. Completa las variables de `.env` con tus propias claves, el ID del calendario y la ruta a las credenciales de Google. No compartas ese archivo.
+4. Configure the required environment variables and Google Calendar credentials. Never commit your real `.env` file or private credentials.
 
-4. Sigue la guía de configuración completa en [`INSTALAR.md`](./INSTALAR.md).
+5. Follow the detailed setup instructions in `INSTALAR.md`.
 
-5. Inicia el servidor:
+6. Start the development server:
 
    ```bash
    npm run dev
    ```
 
-   Abre `http://localhost:3000`. Si el servidor arranca correctamente, debe responder `ok`.
+   Open `http://localhost:3000` and check that the server responds as expected.
 
-## Variables de entorno
+## Limitations and Security
 
-Las principales variables están documentadas en `.env.example`, entre ellas `VAPI_SECRET`, `PANEL_KEY`, `CALENDAR_ID` y las credenciales de Google. Usa valores propios y seguros; no subas nunca `.env`, claves privadas ni archivos de credenciales al repositorio.
+- This is a demonstration project, not a production-ready healthcare system.
+- Call logs are stored locally and may not persist across restarts or deployments.
+- Dashboard authentication is intentionally basic and requires strengthening before production use.
+- Real-world deployment would require additional access controls, error handling, data protection measures and compliance reviews.
+- The assistant is intended for administrative tasks and does not provide medical diagnoses.
 
-## Consideraciones y limitaciones
+## Author
 
-- El registro de llamadas se guarda localmente y puede perderse al reiniciar o desplegar en un hosting con almacenamiento efímero.
-- La autenticación del panel mediante parámetro de consulta es una solución sencilla para una demo, no una protección adecuada para producción.
-- Antes de usarlo con pacientes reales, hay que revisar protección de datos, conservación de información, seguridad, control de acceso, gestión de errores y obligaciones legales aplicables.
-- El asistente es una demostración administrativa y no sustituye el criterio de profesionales sanitarios ni debe diagnosticar.
-
-## Autor
-
-Proyecto personal de portfolio para practicar integración de APIs, automatización de procesos, backend con Node.js y conexión de un agente de IA con herramientas externas.
+Personal portfolio project exploring AI voice agents, API integration, workflow automation and backend development with Node.js.
